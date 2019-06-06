@@ -57,9 +57,7 @@ select * from musicbrainz.release_group where name = 'Taki Taki';
 
 <div align="center"><img src="img/bb2_1.png" height="" /></div>
 
-​	通过查询获取到了这首歌的 id 和 对应的 artist_credit 的 id 为 **2286300**
-
-
+​通过查询获取到了这首歌的 id 和 对应的 artist_credit 的 id 为 **2286300**
 
 1. 在表 `artist_credit` 中查询：
 
@@ -69,11 +67,9 @@ select * from musicbrainz.release_group where artist_credit = 2286300;
 
 <div align="center"><img src="img/bb2_2.png" height="" /></div>
 
-​	获取到了这个 credit 表中的名称， 正是这四位歌手的组成。但是并未给出其他数据。也就意味着，需要通过 artist_credit 这个 id 在其他表中继续查找。
+​获取到了这个 credit 表中的名称， 正是这四位歌手的组成。但是并未给出其他数据。也就意味着，需要通过 artist_credit 这个 id 在其他表中继续查找。
 
-
-
-3. 在表 `artist_credit_name`  中查询：
+2. 在表 `artist_credit_name`  中查询：
 
 ```sql
 select * from musicbrainz.artist_credit_name where artist_credit = 2286300;
@@ -83,13 +79,9 @@ select * from musicbrainz.artist_credit_name where artist_credit = 2286300;
 
 到这里，基本上需要的数据也都到手了。因为`musicbrainz`是通过人工手动添加的，也就意味在这一块可以更丰富化一点：在保留原始数据的基础上，通过 `position` 和 `join_phrase` 两个参数能唯一确定该歌手在元数据中的位置。同时给出了 artist 的 id， 方便进一步查找对应歌手的信息。
 
- 
-
 正向查询 (歌曲到歌手) 思路捋清楚了，反向查询 (歌手到歌曲) 呢？
 
 譬如像我想知道 歌手 `Cardi B` 参与过多少首歌，或者直接点，歌手` Cardi B` 和 `Maroon 5` 一起合作过什么歌？
-
-
 
 1. 在表`artist_credit_name` 中查询：
 
@@ -105,9 +97,7 @@ where a1.name = 'Cardi B' and a2.name = 'Maroon 5';
 
 重点在于 join_phrase 中， join_phrase 的不同标记导致了元数据的不同，最终导致了存在4个 credit，但是其中只有一个 credit id  **2226467** 能在表 `release_group` 中查询到。其他的 credit id 会在其他表中发挥作用（见下方 PS 解释），但奇怪的是，在这一个层面上并未统一为一个 credit id.
 
-
-
-#### 4. PS 
+#### 4. PS
 
 在这个数据库中，对于 **一首歌** 的定义是比较复杂的，可以举一个例子来说明：
 
@@ -121,8 +111,6 @@ where a1.name = 'Cardi B' and a2.name = 'Maroon 5';
 
 4. 其余还有一些信息，像词曲作者(在表`work`中)，标牌(在表`label`中)等，因为和项目关系不大，就不赘述了，感兴趣的话可以去[官方文档](https://musicbrainz.org/doc/MusicBrainz_Database)中查找。
 
-
-
 ## 2. 数据库模式
 
 经过这段时间的思考之后，对于数据库的设计也有了一定的更改，具体如下：
@@ -131,7 +119,7 @@ where a1.name = 'Cardi B' and a2.name = 'Maroon 5';
 
 主要的更改集中在表 `bb_hot100` 和 `date_time` 中。
 
-1. 列 `points `
+1. 列 `points`
 
 如果经常看 billboard 的话，都不会对 **点数** 这个词感到陌生。对于 billboard 来说，需要一个模型来衡量一首歌的流行程度，以数字的方式表现出来，就是点数。详细内容可以参考[知乎](https://www.zhihu.com/question/21255438)。 需要注意的是，官方并没有给出具体的计算规则，且经常会进行调整。
 
@@ -155,7 +143,6 @@ where a1.name = 'Cardi B' and a2.name = 'Maroon 5';
 
 <div align="center"><img src="img/bb2_7.png" height="" /></div>
 
-
 ## 4. 个性化查询
 
 在整个项目中，其他模块都是可以通过时间堆积完成的，而这一块必须有一个比较创新的设计。可以说是一大难点。目前有三个思路。
@@ -163,8 +150,6 @@ where a1.name = 'Cardi B' and a2.name = 'Maroon 5';
 #### 思路一
 
 可以说是最平铺直叙的思路。通过人工手写 sql 语句满足最常用的查询。譬如像针对某歌手/单曲的趋势查询。
-
-
 
 #### 思路二
 
@@ -198,12 +183,9 @@ group by s.id order by c desc limit 5;
 
 这怎么弄嘛？？？(手动摔桌)
 
-
-
 一个还不成熟的思路是：对于大部分复杂的查询语句，都是通过多句简单的查询语句，即对多个简单的关键词查询组成的，可以把这些简单关键词查询称为属性 (attribute)。 那对于复杂查询，只需要对简单的关键词进行排列组合，之后冠以圈内的术语即可。目前还待实验测试。
 
 <div align="center"><img src="img/bb2_8.png" height="" /></div>
-
 
 #### 思路三
 

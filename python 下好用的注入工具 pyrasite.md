@@ -15,21 +15,21 @@
 
    ```python
    Pyrasite Shell 2.0
-   
+
    Connected to 'python ./letter.py'
-   
+
    Python 2.7.5 (default, Jul 13 2018, 13:06:57)
-   
+
    [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)] on linux2
-   
+
    Type "help", "copyright", "credits" or "license" for more information.
-   
+
    (DistantInteractiveConsole)
-   
+
    >>> a = 1
-   
+
    >>> a
-   
+
    1
    ```
 
@@ -39,7 +39,7 @@
 
    不多说看图
 
-<div align="center"><img src="img/pyrasite_1.png" height="" /></div>
+   <div align="center"><img src="img/pyrasite_1.png" height="" /></div>
 
    打印出了 数量-总大小-占比-类型.
 
