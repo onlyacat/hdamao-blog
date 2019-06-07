@@ -96,7 +96,7 @@ jay-z & **b** 这个 b ??? 就是 Beyonce
 
 #### 2. ER 关系图
 
-<div align="center"><img src="img/bb1_1.jpg" height="" /></div>
+<div align="center"><img src="../img/bb1_1.jpg" height="" /></div>
 
 通过 `PyCharm` 自带工具导出的 ER 关系图。表 `date_time` 主要是考虑到官网给出的是具体的年月日，但在查询中可能会更关注周次，在后期会在其中再新增一列专门用来存放周次。
 

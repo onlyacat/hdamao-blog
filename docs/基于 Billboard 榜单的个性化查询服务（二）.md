@@ -55,7 +55,7 @@
 select * from musicbrainz.release_group where name = 'Taki Taki';
 ```
 
-<div align="center"><img src="img/bb2_1.png" height="" /></div>
+<div align="center"><img src="../img/bb2_1.png" height="" /></div>
 
 ​通过查询获取到了这首歌的 id 和 对应的 artist_credit 的 id 为 **2286300**
 
@@ -65,7 +65,7 @@ select * from musicbrainz.release_group where name = 'Taki Taki';
 select * from musicbrainz.release_group where artist_credit = 2286300;
 ```
 
-<div align="center"><img src="img/bb2_2.png" height="" /></div>
+<div align="center"><img src="../img/bb2_2.png" height="" /></div>
 
 ​获取到了这个 credit 表中的名称， 正是这四位歌手的组成。但是并未给出其他数据。也就意味着，需要通过 artist_credit 这个 id 在其他表中继续查找。
 
@@ -75,7 +75,7 @@ select * from musicbrainz.release_group where artist_credit = 2286300;
 select * from musicbrainz.artist_credit_name where artist_credit = 2286300;
 ```
 
-<div align="center"><img src="img/bb2_3.png" height="" /></div>
+<div align="center"><img src="../img/bb2_3.png" height="" /></div>
 
 到这里，基本上需要的数据也都到手了。因为`musicbrainz`是通过人工手动添加的，也就意味在这一块可以更丰富化一点：在保留原始数据的基础上，通过 `position` 和 `join_phrase` 两个参数能唯一确定该歌手在元数据中的位置。同时给出了 artist 的 id， 方便进一步查找对应歌手的信息。
 
@@ -91,7 +91,7 @@ join musicbrainz.artist_credit_name a2 on a1.artist_credit = a2.artist_credit
 where a1.name = 'Cardi B' and a2.name = 'Maroon 5';
 ```
 
-<div align="center"><img src="img/bb2_4.png" height="" /></div>
+<div align="center"><img src="../img/bb2_4.png" height="" /></div>
 
 然后就奇怪了，因为稍微关注欧美音乐圈的都知道，二位只有一首歌合作 `Girls Like You`，为什么会出现 4 个 artist_credit 呢？
 
@@ -115,7 +115,7 @@ where a1.name = 'Cardi B' and a2.name = 'Maroon 5';
 
 经过这段时间的思考之后，对于数据库的设计也有了一定的更改，具体如下：
 
-<div align="center"><img src="img/bb2_5.png" height="" /></div>
+<div align="center"><img src="../img/bb2_5.png" height="" /></div>
 
 主要的更改集中在表 `bb_hot100` 和 `date_time` 中。
 
@@ -129,7 +129,7 @@ where a1.name = 'Cardi B' and a2.name = 'Maroon 5';
 
 官网上，点数的具体数值并没有直接给出，但可以通过一下方式进行定性判断。
 
-<div align="center"><img src="img/bb2_6.png" height="" /></div>
+<div align="center"><img src="../img/bb2_6.png" height="" /></div>
 
 存在类似标记的歌曲可以认为是点数上升，不存在则下降。从1991-01-05 后生效，之前一律用 “-” 标识。
 
@@ -141,7 +141,7 @@ where a1.name = 'Cardi B' and a2.name = 'Maroon 5';
 
 同时，除了 `weeks_on_year`，其他列在 billboard 官网上都可以爬取到，进一步减轻了工作量。
 
-<div align="center"><img src="img/bb2_7.png" height="" /></div>
+<div align="center"><img src="../img/bb2_7.png" height="" /></div>
 
 ## 4. 个性化查询
 
@@ -185,7 +185,7 @@ group by s.id order by c desc limit 5;
 
 一个还不成熟的思路是：对于大部分复杂的查询语句，都是通过多句简单的查询语句，即对多个简单的关键词查询组成的，可以把这些简单关键词查询称为属性 (attribute)。 那对于复杂查询，只需要对简单的关键词进行排列组合，之后冠以圈内的术语即可。目前还待实验测试。
 
-<div align="center"><img src="img/bb2_8.png" height="" /></div>
+<div align="center"><img src="../img/bb2_8.png" height="" /></div>
 
 #### 思路三
 
@@ -195,6 +195,6 @@ group by s.id order by c desc limit 5;
 
 上面一句摘自论文 [《Semantic Parsing with Syntax- and Table-Aware SQL Generation》](https://arxiv.org/pdf/1804.08338.pdf), 实现的效果如下：
 
-<div align="center"><img src="img/基于 Billboard 榜单的个性化查询服务（二）_9.jpg" height="" /></div>
+<div align="center"><img src="https://pic4.zhimg.com/80/v2-68cf709dee61ab4f1c5aa2aaf49164fb_hd.jpg" height="" /></div>
 
 单从图片就看得出来，正是我们所想要的。实现手段主要包括 RNN 神经网络和 NLP 中得部分知识。目前还在艰难的看论文中，希望能够使用在这个项目中。

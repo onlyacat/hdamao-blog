@@ -5,7 +5,7 @@
 2018-12-25 新增
 
 1.专栏信息
-<div align="center"><img src="img/luoo_1.png" height="" /></div>
+<div align="center"><img src="../img/luoo_1.png" height="" /></div>
 
 百度云链接：[https://pan.baidu.com/s/1s8fMAgaQx4uAivAxUauqjg](https://pan.baidu.com/s/1s8fMAgaQx4uAivAxUauqjg#fyy7) 提取码：fyy7
 
@@ -16,7 +16,7 @@
 
 ## **期刊的信息**
 
-<div align="center"><img src="img/luoo_2.png" height="" /></div>
+<div align="center"><img src="../img/luoo_2.png" height="" /></div>
 
 PS： 2018.20.20 新增风格一列
 
@@ -26,13 +26,13 @@ PS： 2018.20.20 新增风格一列
 
 ## **查找用**
 
-<div align="center"><img src="img/luoo_3.png" height="" /></div>
+<div align="center"><img src="../img/luoo_3.png" height="" /></div>
 
 百度云链接：[https://pan.baidu.com/s/1nVbv06_zgS5QnqpDIhbo9Q](https://pan.baidu.com/s/1nVbv06_zgS5QnqpDIhbo9Q#7hpt#7hpt)  提取码：7hpt
 
 ## **单曲的信息**
 
-<div align="center"><img src="img/luoo_4.png" height="" /></div>
+<div align="center"><img src="../img/luoo_4.png" height="" /></div>
 
 链接：[https://pan.baidu.com/s/18KSihs6WUYcitgbbMCQVKw](https://pan.baidu.com/s/18KSihs6WUYcitgbbMCQVKw#cdej)  提取码：cdej
 
@@ -70,4 +70,4 @@ PS ： 总计有 **1000**期期刊：
 ## 至此已全部上传完成
 
 每一期都是这么组成的， 00.jpg 是期刊的配图，一支单曲有歌词，mp3 文件和专辑封面
-<div align="center"><img src="img/luoo_5.png" height="" /></div>
+<div align="center"><img src="../img/luoo_5.png" height="" /></div>

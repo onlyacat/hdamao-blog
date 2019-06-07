@@ -190,7 +190,7 @@ python -m SimpleHTTPServer # Python2 适用
 python -m http.server # Python3 适用
 ```
 
-<div align="center"><img src="img/python_1.png" height="" /></div>
+<div align="center"><img src="../img/python_1.png" height="" /></div>
 
 PS:
 
